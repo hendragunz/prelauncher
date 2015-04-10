@@ -45,8 +45,14 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (3.0.3)
+    autoprefixer-rails (5.1.8.1)
+      execjs
+      json
     awesome_print (1.6.1)
     bcrypt (3.1.10)
+    bootstrap-sass (3.3.4.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
@@ -205,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   awesome_print
+  bootstrap-sass (~> 3.3.4)
   coffee-rails (~> 3.2.1)
   counter_culture (~> 0.1.23)
   delayed_job_active_record

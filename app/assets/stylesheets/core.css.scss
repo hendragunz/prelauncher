@@ -10,8 +10,11 @@
  *
  *= require reset
  *= require_self
+ *
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 form{
 	margin-bottom: 0;
@@ -237,7 +240,7 @@ html.home{
 	font-size: 14px;
 	text-align: center;
 }
- 
+
 
 
 /* Refer a friend page */
