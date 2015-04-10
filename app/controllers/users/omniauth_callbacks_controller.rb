@@ -13,4 +13,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in @user
     redirect_to user_refer_path
   end
+
+  protected
+
+  def after_omniauth_failure_path_for(resource_name)
+    root_path
+  end
 end
