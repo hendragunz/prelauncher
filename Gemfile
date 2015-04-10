@@ -7,7 +7,7 @@ gem 'pg'
 gem 'activeadmin'
 gem 'devise', '~> 3.4.1'
 gem 'omniauth-facebook'
-gem 'strong_parameters'
+gem 'counter_culture', '~> 0.1.23'
 
 # views / js / css
 group :assets do

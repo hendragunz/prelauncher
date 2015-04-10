@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
   has_many    :referrals,       class_name: "User", foreign_key: "referrer_id"
   has_many    :social_networks, dependent: :destroy
 
+  counter_culture :referrer, column_name: 'referrals_count'
+
   # validations
   validates :referral_code, :uniqueness => true
 
