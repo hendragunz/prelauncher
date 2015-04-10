@@ -35,3 +35,4 @@ end
 
 gem 'delayed_job_active_record'
 gem 'unicorn'
+gem 'exception_notification'

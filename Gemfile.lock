@@ -86,6 +86,9 @@ GEM
       dotenv (= 2.0.1)
     erubis (2.7.0)
     eventmachine (1.0.5)
+    exception_notification (4.1.0)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -228,6 +231,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise (~> 3.4.1)
   dotenv-rails
+  exception_notification
   omniauth-facebook
   pg
   quiet_assets
