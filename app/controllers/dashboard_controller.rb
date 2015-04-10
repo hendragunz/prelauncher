@@ -2,7 +2,8 @@ class DashboardController < ApplicationController
     before_filter :authenticate_user!, only: [:refer, :top_list]
 
     def show
-      skip_first_page
+      return redirect_to user_refer_path if user_signed_in?
+
       @bodyId = 'home'
       @is_mobile = mobile_device?
     end
@@ -91,17 +92,18 @@ class DashboardController < ApplicationController
         redirect_to root_path, :status => 404
     end
 
-    private
+    # private
 
-    def skip_first_page
-      if !Rails.application.config.ended
-          email = cookies[:h_email]
-          if email and !User.find_by_email(email).nil?
-              redirect_to '/refer-a-friend'
-          else
-              cookies.delete :h_email
-          end
-      end
-    end
+    # def skip_first_page
+    #   if !Rails.application.config.ended
+    #     cookies.delete :h_email
+    #       email = cookies[:h_email]
+    #       if email and User.find_by_email(email).present?
+    #           redirect_to '/refer-a-friend'
+    #       else
+    #           cookies.delete :h_email
+    #       end
+    #   end
+    # end
 
 end

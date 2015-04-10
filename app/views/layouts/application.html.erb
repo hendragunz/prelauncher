@@ -21,11 +21,15 @@
             <% end %>
         <% end %>
         <%= stylesheet_link_tag "core.css", :media => "all" %>
+        <%= javascript_include_tag "application.js" %>
         <%= csrf_meta_tags %>
 </head>
 <body id="<%= @bodyId %>">
 
 <%= yield %>
+<% if user_signed_in? %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+<% end %>
 
 
 </body>
