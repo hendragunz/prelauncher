@@ -1,6 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.find_or_create(request.env['omniauth.auth'])
+    sign_in @user
+
     cookies[:h_email] = @user.email
 
     # assign refferer if exists
@@ -10,7 +12,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.save
     end
 
-    sign_in @user
     redirect_to user_refer_path
   end
 
