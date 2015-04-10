@@ -105,6 +105,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    libv8 (3.16.14.7)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -165,6 +166,7 @@ GEM
     rake (10.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.5)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.4.13)
@@ -177,6 +179,9 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -210,5 +215,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.21)
   sass-rails (~> 3.2.3)
+  therubyracer
   thin
   uglifier (>= 1.0.3)
