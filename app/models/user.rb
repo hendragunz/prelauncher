@@ -5,11 +5,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable
+  devise :omniauthable, :validatable, :database_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  # attr_accessible :email, :password, :password_confirmation, :remember_me
 
   belongs_to  :referrer,        class_name: "User", foreign_key: "referrer_id"
   has_many    :referrals,       class_name: "User", foreign_key: "referrer_id"

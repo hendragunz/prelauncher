@@ -7,6 +7,7 @@ gem 'pg'
 gem 'activeadmin'
 gem 'devise', '~> 3.4.1'
 gem 'omniauth-facebook'
+gem 'strong_parameters'
 
 # views / js / css
 group :assets do

@@ -25,11 +25,9 @@
     </div>
 </div>
 
-<% 
+<%
     referrals_count = @user.referrals.count
-
     stops = User::REFERRAL_STEPS
-
     found = nil
 
     stops.reverse_each { |stop|
@@ -39,7 +37,7 @@
         else
             stop["selected"] = false
         end
-    }   
+    }
  %>
 <div class="prizes <% if found %>prize-<%= found["class"] %><% end %>">
     <div class="page-content">
@@ -65,11 +63,11 @@
             </div>
         </div>
 
-        <% 
+        <%
             words = ''
             if referrals_count == 1
                 words = 'friend has'
-            elsif 
+            elsif
                 words = 'friends have'
             end
 
@@ -82,7 +80,7 @@
         <% end %>
         <p class="check brandon">Keep checking</p>
 
-        <p class="ship brandon">We ship to the U.S. (& Canada Soon)</p>        
+        <p class="ship brandon">We ship to the U.S. (& Canada Soon)</p>
         <a class="policy brandon" href="/privacy-policy" target="_blank">Privacy Policy</a>
     </div>
 </div>

@@ -15,12 +15,7 @@ module Concerns::User::Authentication
                  .first
 
       unless user
-        user = User.new(email: auth.info.email,
-                        username: auth.raw_info.try(:username) || auth.info.email.split('@').first,
-                        password: Devise.friendly_token[0,20])
-                        # remote_avatar_url: auth.info.image.present? ? process_uri(auth.info.image.sub("square","large")) : "")
-
-
+        user = User.new(email: auth.info.email, password: Devise.friendly_token[0,20])
 
         user.social_networks.build(
           provider:     auth.provider,
@@ -29,7 +24,6 @@ module Concerns::User::Authentication
           raw_info:     auth.to_hash
         )
 
-        user.skip_confirmation!
         if user.save
           user.attributes = {
             gender:       auth.extra.raw_info.gender.present? ? auth.extra.raw_info.gender : "",

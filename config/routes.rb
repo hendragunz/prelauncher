@@ -1,16 +1,17 @@
 Prelaunchr::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  root :to => "users#new"
+  root :to => "dashboard#show"
 
-  match 'users/create' => 'users#create'
-  match 'refer-a-friend' => 'users#refer'
-  match 'privacy-policy' => 'users#policy'
+  get 'refer-a-friend' => 'dashboard#refer', as: :user_refer
+  get 'privacy-policy' => 'dashboard#policy', as: :user_policy
 
   unless Rails.application.config.consider_all_requests_local
-      match '*not_found', to: 'users#redirect', :format => false
+      match '*not_found', to: 'dashboard#redirect', :format => false
   end
 end
