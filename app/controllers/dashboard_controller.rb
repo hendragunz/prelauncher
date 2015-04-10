@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+    before_filter :authenticate_user!, only: [:refer]
     before_filter :skip_first_page, :only => :show
 
     def show
@@ -58,12 +59,9 @@ class DashboardController < ApplicationController
     end
 
     def refer
-        email = cookies[:h_email]
-
         @bodyId = 'refer'
         @is_mobile = mobile_device?
-
-        @user = User.find_by_email(email)
+        @user = current_user
 
         respond_to do |format|
             if !@user.nil?
@@ -72,6 +70,25 @@ class DashboardController < ApplicationController
                 format.html { redirect_to root_path, :alert => "Something went wrong!" }
             end
         end
+    end
+
+
+    # GET - user_top_path
+    #
+    def top_list
+      @bodyId = 'refer'
+      @is_mobile = mobile_device?
+
+      @limit  = params[:limit] || '10'
+      @gender = params[:gender]
+
+      @users  = User.order("referrals_count DESC")
+
+      if params[:gender].present?
+        @users  = @users.where(gender: @gender)
+      end
+
+      @users  = @users.limit(@limit)
     end
 
     def policy

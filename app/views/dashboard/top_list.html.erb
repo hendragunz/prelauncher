@@ -1,0 +1,66 @@
+<div class="header">
+    <div class="content">
+        <p class="logo brandon">Harry&#8217;s</p>
+        <p class="byline brandon">THANK YOU FOR SIGNING UP</p>
+    </div>
+</div>
+
+<div class="hero">
+    <div class="page-content clearfix">
+        <div class="mammoth">
+            <span class="need brandon">Shaving Is<br>Evolving</span>
+        </div>
+        <div class="share-wrap">
+            <p class="why brandon">Don't leave your friends behind</p>
+            <p class="title brandon">INVITE FRIENDS &<br>Earn Product</p>
+            <p class="subtitle brandon">Share your unique link via email, Facebook<br>or Twitter and earn Harry's goods for<br>each friend who signs up.</p>
+        </div>
+    </div>
+</div>
+
+<div class="prizes">
+  <div class="page-content">
+      <p class="callout brandon">Here are the most people share:</p>
+      <div class="row">
+        <div class="col-md-12">
+          <%= form_tag user_top_path, method: :get, class: 'form-inline' do %>
+            <div class="form-group">
+              <%= label_tag :limit, 'Limit:' %>
+              <%= select_tag :limit, options_for_select((1..100).to_a, @limit), class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :gender, 'Gender:' %>
+              <%= select_tag :gender, options_for_select([['All', nil], ['Male', 'male'], ['Female', 'female']], @gender), class: 'form-control' %>
+            </div>
+            <%= submit_tag 'Show', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+      <hr />
+      <br />
+      <table class="table table-stripe table-bordered">
+        <thead>
+          <tr>
+            <th>No. </th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Rank</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each_with_index do |user, idx| %>
+            <tr>
+              <td><%= idx + 1 %></td>
+              <td><%= user.full_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.gender %></td>
+              <td><%= user.referrals_count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+  </div>
+</div>
