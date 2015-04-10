@@ -26,7 +26,7 @@ module Concerns::User::Authentication
 
         if user.save
           user.attributes = {
-            gender:       auth.extra.raw_info.gender.present? ? auth.extra.raw_info.gender : "",
+            gender:       auth.extra.raw_info.gender.present? ? auth.extra.raw_info.gender : "male",
             full_name:    auth.info.name,
             introduction: auth.extra.raw_info.bio.present? ? auth.extra.raw_info.bio : ""
           }
