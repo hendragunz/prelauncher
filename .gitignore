@@ -19,3 +19,4 @@
 
 .elasticbeanstalk
 .env
+/config/database.yml
