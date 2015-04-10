@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-    before_filter :authenticate_user!, only: [:refer]
+    before_filter :authenticate_user!, only: [:refer, :top_list]
     before_filter :skip_first_page, :only => :show
 
     def show
@@ -59,17 +59,9 @@ class DashboardController < ApplicationController
     end
 
     def refer
-        @bodyId = 'refer'
-        @is_mobile = mobile_device?
-        @user = current_user
-
-        respond_to do |format|
-            if !@user.nil?
-                format.html #refer.html.erb
-            else
-                format.html { redirect_to root_path, :alert => "Something went wrong!" }
-            end
-        end
+      @bodyId = 'refer'
+      @is_mobile = mobile_device?
+      @user = current_user
     end
 
 
