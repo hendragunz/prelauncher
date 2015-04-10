@@ -6,6 +6,7 @@ gem 'rails', '3.2.21'
 gem 'pg'
 gem 'activeadmin'
 gem 'devise', '~> 3.4.1'
+gem 'omniauth-facebook'
 
 # views / js / css
 group :assets do
@@ -19,8 +20,14 @@ group :assets do
 end
 
 
-group :development do
+group :development, :test do
   gem 'awesome_print'
+  gem 'dotenv-rails'
+  gem 'thin'
 end
 
-# gem 'delayed_job_active_record'
+group :development do
+  gem 'quiet_assets'
+end
+
+gem 'delayed_job_active_record'
